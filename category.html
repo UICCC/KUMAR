@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo for inline JS</title>
+</head>
+<body>
+    <h1>Income Category</h1>
+    <span>Name</span>
+    <input type="text" id="txtCatName" ><br/>
+    <span>Description</span>
+    <input type="text" id="txtCatDesc"><br/>
+    <input type="button" id="btnAdd" value="Add">
+    <hr>
+    <h1>List of Home Category</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Category Name</th>
+                <th>Category Description</th>
+            </tr>
+        </thead>
+        <tbody id="listIncomeCat">
+            ...
+        </tbody>
+    </table>
+
+    <script>
+        let a = document.getElementById("txtCatName");
+        let b = document.getElementById("txtCatDesc");
+        let c = document.getElementById("btnAdd");
+        let d = document.getElementById("listIncomeCat");
+    
+        c.addEventListener("click", addCategory);
+    
+        function addCategory() {
+            let catName = a.value;
+            let catDesc = b.value;
+    
+            // Create a new row
+            let newRow = document.createElement("tr");
+    
+            // Create two new cells for the row
+            let nameCell = document.createElement("td");
+            let descCell = document.createElement("td");
+    
+            // Set the cell contents to the values from the input fields
+            nameCell.textContent = catName;
+            descCell.textContent = catDesc;
+    
+            // Append the cells to the row
+            newRow.appendChild(nameCell);
+            newRow.appendChild(descCell);
+    
+            // Append the new row to the tbody
+            d.appendChild(newRow);
+    
+            // Clear the input fields
+            a.value = "";
+            b.value = "";
+        }
+    </script>
+    
+</body>
+</html>
